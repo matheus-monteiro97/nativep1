@@ -1,28 +1,20 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Text, List, Divider } from 'react-native-paper';
-
 export default function NotificationsScreen() {
+  const curiosities = [
+    { title: 'Cachorros sonham', description: 'Assim como humanos, cachorros também sonham durante o sono REM.' },
+    { title: 'Nariz único', description: 'Cada cachorro tem uma impressão nasal única, como digitais.' }
+  ];
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Notificações</Text>
+      <Text style={styles.title}>Curiosidades Caninas</Text>
       <List.Section>
-        <List.Item title="Notificação 1" description="Detalhe da notificação 1" left={(props) => <List.Icon {...props} icon="bell" />} />
-        <Divider />
-        <List.Item title="Notificação 2" description="Detalhe da notificação 2" left={(props) => <List.Icon {...props} icon="bell" />} />
+        {curiosities.map((item, i) => (
+          <View key={i}>
+            <List.Item title={item.title} description={item.description} left={(props) => <List.Icon {...props} icon="information" />} />
+            <Divider />
+          </View>
+        ))}
       </List.Section>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-});
